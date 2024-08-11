@@ -12,6 +12,7 @@ require (
 	github.com/andybalholm/brotli v1.1.0 // indirect
 	github.com/bogdanfinn/utls v1.6.1 // indirect
 	github.com/cloudflare/circl v1.3.9 // indirect
+	github.com/gorilla/websocket v1.5.3 // indirect
 	github.com/klauspost/compress v1.17.9 // indirect
 	github.com/quic-go/quic-go v0.46.0 // indirect
 	github.com/tam7t/hpkp v0.0.0-20160821193359-2b70b4024ed5 // indirect

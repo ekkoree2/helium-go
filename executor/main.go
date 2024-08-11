@@ -9,27 +9,22 @@ import (
 )
 
 func readFileLines(path string) []string {
-	if _, err := os.Stat(path); os.IsNotExist(err) {
-		err := os.MkdirAll(path, os.ModePerm)
-		if err != nil {
-			log.Fatalf("failed to create directory: %v\n", err)
-		}
-	}
-	file, err := os.Open(path)
+	file, err := os.OpenFile(path, os.O_RDWR|os.O_CREATE, 0644)
 	if err != nil {
-		log.Fatalf("failed to open file: %v\n", err)
+		log.Fatalf("failed to get file: %v\n", err)
 	}
 	defer func(file *os.File) {
-		err := file.Close()
-		if err != nil {
+		if err := file.Close(); err != nil {
 			log.Fatalf("failed to close file: %v\n", err)
 		}
 	}(file)
+
 	var lines []string
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		lines = append(lines, scanner.Text())
 	}
+
 	return lines
 }
 

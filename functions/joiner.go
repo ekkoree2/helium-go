@@ -51,7 +51,7 @@ func JoinServer(token, invite, cookie, properties string) {
 }
 
 func GetProperties(invite string) string {
-	resp := BuildClient(http.MethodGet, fmt.Sprintf("https://canary.discord.com/api/v9/invites/%s?inputValue=nekito&with_counts=true&with_expiration=true", invite), nil, nil, nil, nil)
+	resp := BuildClient(http.MethodGet, fmt.Sprintf("https://canary.discord.com/api/v9/invites/%s?inputValue=%s&with_counts=true&with_expiration=true", invite, invite), nil, nil, nil, nil)
 	defer func(Body io.ReadCloser) {
 		err := Body.Close()
 		if err != nil {
