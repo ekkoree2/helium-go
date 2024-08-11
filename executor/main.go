@@ -9,6 +9,12 @@ import (
 )
 
 func readFileLines(path string) []string {
+	if _, err := os.Stat(path); os.IsNotExist(err) {
+		err := os.MkdirAll(path, os.ModePerm)
+		if err != nil {
+			log.Fatalf("failed to create directory: %v\n", err)
+		}
+	}
 	file, err := os.Open(path)
 	if err != nil {
 		log.Fatalf("failed to open file: %v\n", err)
