@@ -10,10 +10,25 @@ func Worker(wg *sync.WaitGroup, jobs <-chan []interface{}, method interface{}) {
 	methodValue := reflect.ValueOf(method)
 
 	for args := range jobs {
+		if methodValue.Kind() != reflect.Func {
+			continue
+		}
+
+		if len(args) != methodValue.Type().NumIn() {
+			continue
+		}
+
 		in := make([]reflect.Value, len(args))
 		for i, arg := range args {
-			in[i] = reflect.ValueOf(arg)
+			if arg == nil {
+				in[i] = reflect.Zero(methodValue.Type().In(i))
+			} else {
+				in[i] = reflect.ValueOf(arg)
+			}
 		}
-		methodValue.Call(in)
+
+		if len(in) == methodValue.Type().NumIn() {
+			methodValue.Call(in)
+		}
 	}
 }

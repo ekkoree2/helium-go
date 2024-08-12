@@ -11,7 +11,8 @@ import (
 )
 
 type BodyResponse struct {
-	Message interface{} `json:"message"`
+	Message    interface{} `json:"message"`
+	RetryAfter interface{} `json:"retry_after"`
 }
 
 // GetHeaders TODO: flexible x-super-properties (getting latest build)
