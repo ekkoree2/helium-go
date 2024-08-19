@@ -7,6 +7,8 @@ import (
 	"github.com/bogdanfinn/tls-client/profiles"
 	"io"
 	"log"
+	"main/console"
+	"os"
 	"strings"
 )
 
@@ -72,7 +74,16 @@ func BuildClient(method, url string, body io.Reader, token, cookie, context *str
 	if err != nil {
 		log.Fatalf("failed to send request: %v\n", err)
 	}
+	bodyText, err := io.ReadAll(resp.Body)
+	if err != nil {
+		log.Fatalf("failed to read response body: %v\n", err)
+	}
+	if strings.Contains(string(bodyText), "cloudfare") {
+		console.DisplayText("CLOUDFARE", console.Colors["cyan"], "failed to perform task", "")
+		os.Exit(0)
+	}
 	return resp
+
 }
 
 func GetCookies() string {

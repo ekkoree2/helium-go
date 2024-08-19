@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e2464c61-2803-4804-beb9-2e4f1636b58c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/scrape.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/scrape.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/functions/client.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
